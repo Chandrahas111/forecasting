@@ -1,0 +1,105 @@
+models:
+  xgboost:
+    params:
+      n_estimators : 100
+      max_depth : 6
+      learning_rate : 0.1
+      objective : 'reg:squarederror'
+      random_state : 42
+
+  lightgbm:
+    params:
+      num_leaves : 31
+      n_estimator : 100
+      learning_rate : 0.05
+      objective : 'regression'
+      random_state : 42
+
+  prophet:
+    enabled : false
+    params : 
+      seasonality_mode : 'multiplicative'
+      seasonality_prior_state : 10.0
+      changepoint_prior_state : 0.05
+      yearly_seasonality : true
+      weekly_seasonality : true
+      daily_seasonality : false
+
+
+# feature engineering
+features:
+  date_features:
+    - day
+    - week
+    - month
+    - year
+    - dayofweek
+    - dayofyear
+    - quarter
+    - is_weekend
+
+  lag_features:
+    - 1
+    - 2
+    - 3
+    - 7
+    - 14
+    - 21
+    - 30
+
+  rooling_features:
+    windows : [3,6,14,21,30]
+    functions : ['mean','max','median', 'std', 'min']
+
+# data validation
+validation : 
+  required_columns :
+    - 'date'
+    - 'sales'
+    - 'store_id'
+    - 'product_id'
+  
+  data_types:
+    date : 'datetime64[ns]'
+    sales : 'float64'
+    store_id : 'int64'
+    product_id : 'int64'
+
+  value_range:  
+    sales:
+      min : 0
+      max : 1000000
+
+# training configuration
+training:
+  test_size : 0.2
+  validation_size : 0.1
+  cv_folds : 5
+  metrics :
+    - 'rmse'
+    - 'mae'
+    - 'mape'
+    - 'r2'
+
+# inferance configuration
+inferance:
+  batch_size : 1000
+  prediction_horizon : 30 #days
+  confidence_interval : [0.8, 0.95]
+
+# monitoring configuration
+monitoring:
+  drift_detection :
+    enabled : true
+    method : 'kolmogorov_smirnov'
+    thershold : 0.1
+
+  performance_monitoring:
+    enabled : true
+    alert_thershold:
+      rmse : 1000
+      mae : 500
+      mape : 0.2
+      r2 : 0.8
+
+

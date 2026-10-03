@@ -1,0 +1,54 @@
+# Astro Runtime includes the following pre-installed providers packages: https://www.astronomer.io/docs/astro/runtime-image-architecture#provider-packages
+# Astro Runtime includes the following pre-installed providers packages: https://www.astronomer.io/docs/astro/runtime-image-architecture#provider-packages
+
+# ML and data processing
+pandas
+numpy
+scikit-learn
+xgboost
+lightgbm
+prophet
+statsmodels
+
+# mlflow for tracking
+mlflow
+boto3
+
+# data validation
+pandera
+
+# Feature engineering
+category-encoders
+
+#model serving
+fastapi
+uvicorn
+pydantic
+httpx
+
+# visulation
+matplotlib
+seaborn
+plotly
+
+# database connection
+sqlalchemy
+psycopg2-binary
+
+# cloud storage
+s3fs
+
+# testing
+pytest
+
+# additional utalities
+python-dotenv
+pyyaml
+joblib
+optuna
+shap
+holidays
+
+# UI
+streamlit
+# astro-run-dag
