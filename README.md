@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Overview
 ========
 
@@ -43,3 +44,6 @@ Contact
 =======
 
 The Astronomer CLI is maintained with love by the Astronomer team. To report a bug or suggest a change, reach out to our support.
+=======
+# forecasting
+>>>>>>> a432e5b71d825b6e5acbb8ccf7d57c788080ced4
